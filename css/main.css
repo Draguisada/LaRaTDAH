@@ -1,0 +1,72 @@
+body {
+    background-color: #1e2e3e;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 100svh;
+
+    font-family: 'Courier New', Courier, monospace;
+    color: whitesmoke;
+}
+
+:root{
+    --bolaSize: 65px;
+
+    --corTubo: #fff;
+    --corBolaVermelha: #f00;
+    --corBolaAzul: #00f;
+    --corBolaVerde: #0f0;
+
+    --tamanhoBordaTubo: 10px;
+}
+
+* {
+    margin: 0;
+}
+
+main {
+    display: flex;
+    gap: 5%;
+    row-gap: 5%;
+    width: fit-content;
+
+    justify-content: center;
+    width: 100%;
+
+    flex-wrap: wrap;
+}
+
+.tubo {
+    border: solid var(--corTubo);
+    border-top: 0;
+    min-width: var(--bolaSize);
+    width: max-content;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    display: flex;
+}
+
+.bola {
+    height: var(--bolaSize);
+    width: var(--bolaSize);
+    border-radius: var(--bolaSize);
+
+    border: 0 5px 0 5px transparent;
+}
+
+.segurando {
+    display: flex;
+    flex-direction: column;
+}
+
+#reiniciar {
+    
+}
