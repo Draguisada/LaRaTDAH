@@ -15,11 +15,20 @@
 
 </head>
 <body>
-    <div id="segurando">Segurando...
+
+    <div id="hud">
+        <h1 onclick="changeLevels(Math.max(--levelGlobal, 1))"><</h1>
+        <h1 id="levelDisplay">1</h1>
+        <h1 onclick="changeLevels(Math.max(++levelGlobal, 1))">></h1>
+    </div>
+
+    <h1>Joguinho TDAH</h1>
+    <div id="segurando">
+        <h3>Segurando..</h3>
         <div class="bola"> </div>
     </div>
     
-    <h1>Joguinho TDAH</h1>
+    
     
     
     <div id="vitoria">

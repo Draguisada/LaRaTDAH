@@ -1,11 +1,13 @@
 
 
 class Tubo {
-    constructor(maxBolas, cor = 1) {
+    constructor(maxBolas, cor = 1, min = 0) {
         this.obj = document.createElement('div');
         
         this.obj.maxBolas = maxBolas;
         this.obj.classList.add('tubo');
+
+        this.obj.min = min;
 
         this.obj.corRequerida = cor;
         this.obj.style.borderColor = cores[cor];

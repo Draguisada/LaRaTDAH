@@ -1,7 +1,10 @@
 const mainGame = document.getElementById('jogo');
 let corSegurar = 999;
+const segurandoObj = document.getElementById('segurando');
+const levelDisplay = document.getElementById('levelDisplay');
 
-const divSegurarBola = document.getElementById('segurando').childNodes[1];
+
+const divSegurarBola = document.getElementById('segurando').childNodes[3];
 
 cores = {
     999: '#00000000',
@@ -37,7 +40,8 @@ function handleClick(event) {
         tubo.insertBefore(bolaObj, tubo.childNodes[0]);
 
         corSegurar = 999;
-
+        
+        segurandoObj.style.opacity = 0;
         renderizarPreview();
         checkWin();
         }
@@ -45,6 +49,7 @@ function handleClick(event) {
     }
     
     corSegurar = select.cor;
+    segurandoObj.style.opacity = 100;
     tubo.removeChild(select);
     renderizarPreview();
 }
@@ -75,6 +80,15 @@ function checkWin() {
             return false;
         }
         console.log('passou primeiro teste')
+        
+        console.log('terceiro teste')
+        
+        if (tuboAtual.min > bolas.length) {
+            return false;
+        }
+
+        console.log('passou terceiro teste')
+        
         console.log('segundo teste')
 
         if (corPrincipal == 1 || corPrincipal == 999) {
@@ -110,14 +124,14 @@ function checkWin() {
         }
     }
     console.log('verdade!')
-    changeLevels(levelGlobal++)
+    changeLevels(++levelGlobal)
     return true;
 }
 
 function vitoria() {
 
 }
-changeLevels(levelGlobal++)
+changeLevels(levelGlobal)
 
 
 
