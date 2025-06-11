@@ -7,7 +7,7 @@ class Tubo {
         this.obj.maxBolas = maxBolas;
         this.obj.classList.add('tubo');
 
-        this.obj.min = min;
+        this.obj.min = Math.min(min, maxBolas);
 
         this.obj.corRequerida = cor;
         this.obj.style.borderColor = cores[cor];

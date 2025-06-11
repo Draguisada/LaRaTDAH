@@ -3,6 +3,7 @@ let corSegurar = 999;
 const segurandoObj = document.getElementById('segurando');
 const levelDisplay = document.getElementById('levelDisplay');
 
+const tituloSite = document.querySelector('title');
 
 const divSegurarBola = document.getElementById('segurando').childNodes[3];
 
@@ -13,11 +14,17 @@ cores = {
     2: '#f24123', // Vermelho
     3: '#20e813', // Verde
     4: '#1210f1', // Azul
-    5: '#',
+    5: '#f6aab7', // Rosa claro trans
     6: '#ff1c8d', // Rosa pan
     7: '#ffd700', // amarelo pan
     8: '#1ab3ff', // Azul clarinho
-    9: '#'
+    9: '#9b59d0', // Roxo não binário
+    10: '#d42c00', // Laranja lésbico1 
+    11: '#d161a2', // Rosa lésbico1 
+
+    12: '#d42c00', // Laranja lésbico1 
+    13: '#d42c00', // Laranja lésbico1 
+    14: '#d42c00' // Laranja lésbico1 
 }
 
 function handleClick(event) {
@@ -50,6 +57,10 @@ function handleClick(event) {
     
     corSegurar = select.cor;
     segurandoObj.style.opacity = 100;
+
+    // segurandoObj.style.left = `calc(${tubo.offsetLeft} + var(--tamanhoBordaTubo))`;
+    // segurandoObj.style.top = tubo.offsetTop + 'px';
+    
     tubo.removeChild(select);
     renderizarPreview();
 }
@@ -128,6 +139,12 @@ function checkWin() {
     return true;
 }
 
+function isNumeric(str) {
+  if (typeof str != "string") return false // we only process strings!  
+  return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
+         !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
+}
+
 function vitoria() {
 
 }
@@ -135,4 +152,18 @@ changeLevels(levelGlobal)
 
 
 
+let digitos = '';
+document.addEventListener('keypress', (e) => {
+    let key = e.key
+    console.log(key)
+    if (key == 'Enter') {
+        changeLevels(parseInt(digitos));
+        levelGlobal = parseInt(digitos);
+        digitos = '';
+    }
+    if (isNumeric(key)) {
+        digitos = digitos + key
+    }
+    tituloSite.innerText = digitos;
+})
 
