@@ -14,13 +14,16 @@ cores = {
     2: '#f24123', // Vermelho
     3: '#20e813', // Verde
     4: '#1210f1', // Azul
-    5: '#f6aab7', // Rosa claro trans
+    
     6: '#ff1c8d', // Rosa pan
     7: '#ffd700', // amarelo pan
     8: '#1ab3ff', // Azul clarinho
-    9: '#9b59d0', // Roxo não binário
+    
     10: '#d42c00', // Laranja lésbico1 
+    
     11: '#d161a2', // Rosa lésbico1 
+    9: '#9b59d0', // Roxo não binário
+    5: '#f6aab7', // Rosa claro trans
 
     12: '#d42c00', // Laranja lésbico1 
     13: '#d42c00', // Laranja lésbico1 
