@@ -253,7 +253,6 @@ function changeLevels(level) {
             toggleAcabou(true);
 
         break;
-
     }
 
 

@@ -205,7 +205,16 @@ document.addEventListener('keypress', (e) => {
     tituloSite.innerText = digitos;
 })
 
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
-    levelGlobal = parseInt(localStorage.getItem('salvarNivel'));
-    changeLevels(levelGlobal)
+    if (localStorage.getItem("salvarNivel") == null) {
+        localStorage.setItem("salvarNivel", '1');
+        changeLevels(1);
+    } else {
+        levelGlobal = parseInt(localStorage.getItem('salvarNivel'));
+        changeLevels(levelGlobal);
+    }
+    
 })
