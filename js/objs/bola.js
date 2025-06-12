@@ -7,7 +7,7 @@ class Bola {
         this.obj.cor = cor;
         this.obj.classList.add('bola');
         this.obj.style.backgroundColor = `${cores[cor]}`;
-        // this.obj.innerHTML = `${cor}`;
+        this.obj.innerHTML = `${cor}`;
 
         return this.obj;
     }

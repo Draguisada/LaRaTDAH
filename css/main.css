@@ -28,7 +28,7 @@ body {
     --backgroundColor: #1e2e3e;
     
 
-    --assistCor: none;
+    --assistCor: transparent;
     --acabou: none;
 }
 
@@ -124,10 +124,15 @@ button {
     background-color: var(--rosaFELPS);
 }
 
-.bola > p {
-    display: var(--assistCor);
+.bola {
+    color: var(--assistCor);
+    
     font-weight: bold;
     font-size: 1.3rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #acabou {

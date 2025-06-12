@@ -167,10 +167,10 @@ let assist = 0;
 function toggleAssist() {
     if (assist) {
         assist = 0;
-        r.style.setProperty('--assistCor', 'none')
+        r.style.setProperty('--assistCor', 'transparent')
     } else {
         assist = 1;
-        r.style.setProperty('--assistCor', 'block')
+        r.style.setProperty('--assistCor', 'var(--backgroundColor)')
     }
 }
 
