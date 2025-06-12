@@ -1,5 +1,5 @@
 body {
-    background-color: #1e2e3e;
+    background-color: var(--backgroundColor);
 
     display: flex;
     flex-direction: column;
@@ -18,8 +18,18 @@ body {
     --corTubo: #fff;
     --corBotoes: #1e3e2e;
 
+    --verdeLaRa: #acbb3e;
+    --rosaLaRa: #f556e0;
+    --verdeLaRa2: #99b969;
+    --rosaFELPS: #ff3464;
+
     --tamanhoBordaTubo: 10px;
+
+    --backgroundColor: #1e2e3e;
     
+
+    --assistCor: none;
+    --acabou: none;
 }
 
 * {
@@ -68,7 +78,7 @@ main {
     margin: 2rem 0;
 }
 
-#reiniciar {
+button {
     background-color: var(--corBotoes);
     color: whitesmoke;
     border: 0;
@@ -95,4 +105,40 @@ main {
     padding: 0.5rem;
     
     font-size: 3rem;
+}
+
+#vitoria {
+    display: none;
+    position: absolute;
+
+    flex-direction: column;
+
+    background-color: var(--verdeLaRa2);
+    padding: 1rem;
+    color: var(--rosaFELPS);
+
+    border-radius: 10px;
+}
+
+#vitoria > button {
+    background-color: var(--rosaFELPS);
+}
+
+.bola > p {
+    display: var(--assistCor);
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+#acabou {
+    display: var(--acabou);
+    position: absolute;
+
+    flex-direction: column;
+
+    background-color: var(--verdeLaRa2);
+    padding: 1rem;
+    color: var(--rosaFELPS);
+
+    border-radius: 10px;
 }

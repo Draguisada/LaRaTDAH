@@ -22,7 +22,7 @@
         <h1 onclick="changeLevels(Math.max(++levelGlobal, 1))">></h1>
     </div>
 
-    <h1 id="joguinhoTDAH">Joguinho TDAH</h1>
+    <h1 id="joguinhoTDAH" onclick="toggleAssist()">Joguinho TDAH</h1>
     <div id="segurando">
         <!-- <h3>Segurando..</h3> -->
         <div class="bola"> </div>
@@ -32,7 +32,11 @@
     
     
     <div id="vitoria">
-
+        <h1>Parabéns! Concluiu o nível! :)</h1>
+        <button onclick="changeLevels(++levelGlobal)">Próximo</button>
+    </div>
+    <div id="acabou">
+        <h1>Acabou por aqui, pensei demais pra hoje, ainda vou tentar fazer procedural (infinito)</h1>
     </div>
 
     <main id="jogo">

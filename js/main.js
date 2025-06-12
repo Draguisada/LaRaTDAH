@@ -3,6 +3,8 @@ let corSegurar = 999;
 const segurandoObj = document.getElementById('segurando');
 const levelDisplay = document.getElementById('levelDisplay');
 
+const vitoriaObj = document.getElementById('vitoria');
+
 const tituloSite = document.querySelector('title');
 
 const divSegurarBola = document.getElementById('segurando').childNodes[3];
@@ -12,21 +14,21 @@ cores = {
     0: '#000', // preto
     1: '#fff', // branco
     2: '#f24123', // Vermelho
-    3: '#20e813', // Verde
-    4: '#1210f1', // Azul
-    
+    3: '#20c833', // Verde
+    4: '#1260f1', // Azul
+
+    5: '#f6aab7', // Rosa claro trans
     6: '#ff1c8d', // Rosa pan
     7: '#ffd700', // amarelo pan
     8: '#1ab3ff', // Azul clarinho
-    
-    10: '#d42c00', // Laranja lésbico1 
-    
-    11: '#d161a2', // Rosa lésbico1 
     9: '#9b59d0', // Roxo não binário
-    5: '#f6aab7', // Rosa claro trans
+    10: '#d42c00', // Laranja lésbico1 
+    11: '#d161a2', // Rosa lésbico1 
 
-    12: '#d42c00', // Laranja lésbico1 
-    13: '#d42c00', // Laranja lésbico1 
+    12: '#ff3464', // Rosa felps
+
+    13: '#acbb3e', // Verde lara 
+    
     14: '#d42c00' // Laranja lésbico1 
 }
 
@@ -102,6 +104,14 @@ function checkWin() {
         }
 
         console.log('passou terceiro teste')
+
+        console.log('quarto teste')
+        
+        if (tuboAtual.maiorQue > bolas.length) {
+            return false;
+        }
+
+        console.log('passou quarto teste')
         
         console.log('segundo teste')
 
@@ -138,7 +148,8 @@ function checkWin() {
         }
     }
     console.log('verdade!')
-    changeLevels(++levelGlobal)
+    vitoria();
+    
     return true;
 }
 
@@ -149,8 +160,32 @@ function isNumeric(str) {
 }
 
 function vitoria() {
-
+    vitoriaObj.style.display = 'flex';
 }
+
+let assist = 0;
+function toggleAssist() {
+    if (assist) {
+        assist = 0;
+        r.style.setProperty('--assistCor', 'none')
+    } else {
+        assist = 1;
+        r.style.setProperty('--assistCor', 'block')
+    }
+}
+
+
+function toggleAcabou(especifico) {
+    if (!(especifico)) {
+
+        r.style.setProperty('--acabou', 'none')
+    } else {
+
+        r.style.setProperty('--acabou', 'flex')
+    }
+}
+
+
 changeLevels(levelGlobal)
 
 
