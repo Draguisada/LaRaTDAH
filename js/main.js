@@ -22,7 +22,7 @@ cores = {
     7: '#ffd700', // amarelo pan
     8: '#1ab3ff', // Azul clarinho
     9: '#9b59d0', // Roxo não binário
-    10: '#d42c00', // Laranja lésbico1 
+    10: '#d86c20', // Laranja lésbico1 
     11: '#d161a2', // Rosa lésbico1 
 
     12: '#ff3464', // Rosa felps
@@ -186,7 +186,7 @@ function toggleAcabou(especifico) {
 }
 
 
-changeLevels(levelGlobal)
+
 
 
 
@@ -205,3 +205,7 @@ document.addEventListener('keypress', (e) => {
     tituloSite.innerText = digitos;
 })
 
+document.addEventListener('DOMContentLoaded', function() {
+    levelGlobal = parseInt(localStorage.getItem('salvarNivel'));
+    changeLevels(levelGlobal)
+})

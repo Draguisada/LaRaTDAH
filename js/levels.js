@@ -12,6 +12,8 @@ function changeLevels(level) {
     corSegurar = 999;
     renderizarPreview();
     toggleAcabou(false);
+
+    localStorage.setItem('salvarNivel', levelGlobal);
     
     switch (level) {
         case 1:
@@ -43,7 +45,7 @@ function changeLevels(level) {
             r.style.setProperty('--bolaSize', `min(${window.innerWidth/10}px, ${bolaSizePadrao})`);
 
             obj = new Tubo(6, 999);
-            obj.gerarBolas([9, 11, 5, 5, 11, 9]);
+            obj.gerarBolas([6, 7, 8, 8, 7, 6]);
 
             obj = new Tubo(5, 1, 4);
             obj.gerarBolas();
@@ -55,7 +57,7 @@ function changeLevels(level) {
             obj.gerarBolas();
 
             obj = new Tubo(6, 999);
-            obj.gerarBolas([9, 11, 5, 5, 11, 9]);
+            obj.gerarBolas([6, 7, 8, 8, 7, 6]);
 
             break;
         case 4:
@@ -134,7 +136,7 @@ function changeLevels(level) {
             obj = new Tubo(maxBolas=10, cor=1, min=0);
             obj.gerarBolas([5]);
             
-            obj = new Tubo(maxBolas=10, cor=6, min=0);
+            obj = new Tubo(maxBolas=10, cor=6, min=10);
             obj.gerarBolas([6,6,6,8,8,6,9,6,6]);
 
             obj = new Tubo(maxBolas=10, cor=1, min=0);
@@ -149,7 +151,7 @@ function changeLevels(level) {
             obj = new Tubo(maxBolas=10, cor=1, min=0);
             obj.gerarBolas([9,9,9,9,9,9,9,9]);
 
-            obj = new Tubo(maxBolas=10, cor=8, min=0);
+            obj = new Tubo(maxBolas=10, cor=8, min=10);
             obj.gerarBolas([8,8,8]);
             break;
         case 8:
@@ -208,20 +210,20 @@ function changeLevels(level) {
 
         case 12:
             r.style.setProperty('--bolaSize', `min(${window.innerWidth/10}px, ${bolaSizePadrao})`);
-            obj = new Tubo(maxBolas=8, cor=2, min=0);
-            obj.gerarBolas([1,1,2,1,3,3,2]);
+            obj = new Tubo(maxBolas=8, cor=8, min=7);
+            obj.gerarBolas([12,12,8,12,10,10,8]);
             
-            obj = new Tubo(maxBolas=8, cor=1, min=0);
-            obj.gerarBolas([4,4,4,4,2,4,1]);
+            obj = new Tubo(maxBolas=8, cor=12, min=5);
+            obj.gerarBolas([10,4,10,4,8,4,12]);
 
-            obj = new Tubo(maxBolas=7, cor=3, min=0);
-            obj.gerarBolas([3,3,3,3,2,1]);
+            obj = new Tubo(maxBolas=7, cor=10, min=6);
+            obj.gerarBolas([4,10,4,10,8,12]);
 
             obj = new Tubo(maxBolas=2, cor=1, min=0);
             obj.gerarBolas([4]);
 
-            obj = new Tubo(maxBolas=6, cor=4, min=0);
-            obj.gerarBolas([2,2,2]);
+            obj = new Tubo(maxBolas=6, cor=4, min=6);
+            obj.gerarBolas([8,8,8]);
 
         break;
 
@@ -234,7 +236,7 @@ function changeLevels(level) {
             obj.gerarBolas([1, 2,]);
 
             obj = new Tubo(maxBolas=3, cor=1, min=0);
-            obj.gerarBolas([1, 4]);
+            obj.gerarBolas([4, 1]);
 
             obj = new Tubo(maxBolas=4, cor=1, min=0);
             obj.gerarBolas([2, 4, 5, 2]);
