@@ -13,7 +13,7 @@ class Tubo {
         this.obj.maiorQue = maiorQue;
 
         this.obj.style.borderColor = cores[cor];
-        this.obj.style.backgroundColor = cores[cor] + '20';
+        this.obj.style.backgroundColor = cores[cor] + '30';
 
         this.obj.style.height = `calc(${maxBolas} * var(--bolaSize))`;
 

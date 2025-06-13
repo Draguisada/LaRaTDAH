@@ -29,6 +29,7 @@ body {
     
 
     --assistCor: transparent;
+    --assistBackground: white;
     --acabou: none;
 }
 
@@ -61,6 +62,8 @@ main {
     justify-content: flex-end;
 
     display: flex;
+
+    border-radius: 0 0 calc(var(--bolaSize) / 3) calc(var(--bolaSize) / 3);
 }
 
 .bola {
@@ -69,6 +72,18 @@ main {
     border-radius: var(--bolaSize);
 
     border: 0 5px 0 5px transparent;
+    text-shadow: var(--assistBackground);
+
+    color: var(--assistCor);
+    
+    font-weight: bold;
+    font-size: 1.3rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    user-select: none;
 }
 
 #segurando {
@@ -81,6 +96,7 @@ main {
 button {
     background-color: var(--corBotoes);
     color: whitesmoke;
+    
     border: 0;
     font-size: 1.5rem;
     border-radius: 5px;
@@ -122,17 +138,6 @@ button {
 
 #vitoria > button {
     background-color: var(--rosaFELPS);
-}
-
-.bola {
-    color: var(--assistCor);
-    
-    font-weight: bold;
-    font-size: 1.3rem;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 #acabou {

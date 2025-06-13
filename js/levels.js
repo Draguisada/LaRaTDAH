@@ -248,8 +248,35 @@ function changeLevels(level) {
             obj.gerarBolas([1]);
 
         break;
-
         case 14:
+            r.style.setProperty('--bolaSize', `min(${window.innerWidth/10}px, ${bolaSizePadrao})`);
+
+            obj = new Tubo(maxBolas=5, cor=5, min=0);
+            obj.gerarBolas([1, 2, 3, 2]);
+            
+            obj = new Tubo(maxBolas=4, cor=1, min=0);
+            obj.gerarBolas([ 3, 1, ]);
+
+            obj = new Tubo(maxBolas=5, cor=2, min=0);
+            obj.gerarBolas([4, 2, 4, 3, 2]);
+
+            obj = new Tubo(maxBolas=4, cor=2, min=0);
+            obj.gerarBolas([3, 5, 4, 2]);
+
+            obj = new Tubo(maxBolas=2, cor=1, min=0);
+            obj.gerarBolas([5, 4, 5]);
+
+            obj = new Tubo(maxBolas=4, cor=3, min=0);
+            obj.gerarBolas([ 3, 2, 1, 5]);
+
+            obj = new Tubo(maxBolas=5, cor=3, min=0);
+            obj.gerarBolas([3, 3,  1, 2]);
+
+            obj = new Tubo(maxBolas=3, cor=1, min=0);
+            obj.gerarBolas([3, 2, 2]);
+            break;
+
+        case 15:
             toggleAcabou(true);
 
         break;

@@ -7,7 +7,7 @@ const vitoriaObj = document.getElementById('vitoria');
 
 const tituloSite = document.querySelector('title');
 
-const divSegurarBola = document.getElementById('segurando').childNodes[3];
+const divSegurarBola = document.querySelector('#segurando > .bola');
 
 cores = {
     999: '#00000000',
@@ -168,9 +168,11 @@ function toggleAssist() {
     if (assist) {
         assist = 0;
         r.style.setProperty('--assistCor', 'transparent')
+        r.style.setProperty('--assistBackground', 'transparent')
     } else {
         assist = 1;
         r.style.setProperty('--assistCor', 'var(--backgroundColor)')
+        r.style.setProperty('--assistBackground', '1px 0 #fff, -1px 0 #fff, 0 1px #fff, 0 -1px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff')
     }
 }
 
