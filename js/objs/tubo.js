@@ -1,7 +1,7 @@
 
 
 class Tubo {
-    constructor(maxBolas, cor = 1, min = 0, maiorQue = 0) {
+    constructor(maxBolas, cor = 1, min = 0) {
         this.obj = document.createElement('div');
         
         this.obj.maxBolas = maxBolas;
@@ -10,7 +10,6 @@ class Tubo {
         this.obj.min = Math.min(min, maxBolas);
 
         this.obj.corRequerida = cor;
-        this.obj.maiorQue = maiorQue;
 
         this.obj.style.borderColor = cores[cor];
         this.obj.style.backgroundColor = cores[cor] + '30';

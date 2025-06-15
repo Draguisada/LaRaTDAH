@@ -9,9 +9,11 @@ const tituloSite = document.querySelector('title');
 
 const divSegurarBola = document.querySelector('#segurando > .bola');
 
+const tituloNivel = document.getElementById('joguinhoTDAH');
+
 cores = {
     999: '#00000000',
-    0: '#000', // preto
+    0: '#fff', // preto
     1: '#fff', // branco
     2: '#f24123', // Vermelho
     3: '#20c833', // Verde
@@ -83,6 +85,10 @@ function geralEvento() {
     }
 }
 
+function nomeNivel(nome) {
+    tituloNivel.innerHTML = nome;
+}
+
 
 function checkWin() {
     let tubos = document.getElementsByClassName('tubo');
@@ -91,58 +97,40 @@ function checkWin() {
         let corPrincipal = tuboAtual.corRequerida;
         let bolas = tuboAtual.childNodes;
 
-        console.log('primeiro teste')
+        console.log('primeiro teste | tubos sem cor não pode ter bolas')
         if (corPrincipal == 999 && bolas.length != 0) {
             return false;
         }
         console.log('passou primeiro teste')
         
-        console.log('terceiro teste')
+        console.log('segundo teste || se o minimo de bolas na variavel do tubo é condizente')
         
         if (tuboAtual.min > bolas.length) {
             return false;
         }
 
-        console.log('passou terceiro teste')
-
-        console.log('quarto teste')
+        console.log('passou segundo teste')
         
-        if (tuboAtual.maiorQue > bolas.length) {
-            return false;
-        }
+        console.log('terceiro teste || regra do cor do tubo')
 
-        console.log('passou quarto teste')
-        
-        console.log('segundo teste')
-
-        if (corPrincipal == 1 || corPrincipal == 999) {
+        if (corPrincipal == 0 || corPrincipal == 999) {
             if (bolas.length >= 1){
                 corPrincipal = bolas[0].cor;
             }
 
         } else {
-            console.log('segundo teste else entrou')
+                
+            console.log('terceiro teste else || ')
             if (tuboAtual.childElementCount == 0 ) {
                 console.log('falso!');
                 return false;
             }
         }
-        console.log('passou segundo teste')
+        console.log('passou terceiro teste')
         
         for (let i = 0; i < bolas.length; i++) {
-
-            if (corPrincipal == 1) {
-                corPrincipal = bolas[i].cor;
-            } else {
-                if (tuboAtual.childElementCount == 0) {
-                    console.log('falso');
-                    return false;
-                }
-            }
-
+        
             if (bolas[i].cor != corPrincipal) {
-                check = false;
-                console.log('falso!');
                 return false;
             }
         }
