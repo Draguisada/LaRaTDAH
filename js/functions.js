@@ -174,8 +174,6 @@ function saveState() {
     let listaMovs = gameState.pos;
     
 
-    console.log(listaMovs);
-
     if (listaMovs.length <= 3) {
         listaMovs.push(gameAtual);
     } else {

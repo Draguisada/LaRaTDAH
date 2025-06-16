@@ -268,7 +268,7 @@ function changeLevels(level) {
 
         break;
         case 14:
-            nomeNivel('Ai ta doendo, ta prensado <br><br> clique duas vezes na tela para reverter');
+            nomeNivel('Ai ta doendo, ta prensado <br><br> clique duas vezes no vazio para reverter');
             obj = new Tubo(maxBolas=1, cor=0, min=0);
             obj.gerarBolas([1,  2]);
             obj = new Tubo(maxBolas=1, cor=0, min=0);
@@ -294,10 +294,10 @@ function changeLevels(level) {
             obj.gerarBolas([]);
 
             break;
-        case 16:
+        // case 16:
 
-            break;
-        case 17:
+        //     break;
+        case 16:
             nomeNivel('Como é possível isso');
             r.style.setProperty('--bolaSize', `min(${window.innerWidth/10}px, ${bolaSizePadrao})`);
 
@@ -328,7 +328,7 @@ function changeLevels(level) {
             new Tubo(maxBolas=1, cor=0)
             break;
 
-        case 18:
+        case 17:
             toggleAcabou(true);
 
         break;
