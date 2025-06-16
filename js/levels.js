@@ -1,24 +1,28 @@
-let levelGlobal = 1;
+let levelGlobal;
 const r = document.querySelector(':root');
 const bolaSizePadrao = '55px';
 
 function changeLevels(level) {
     mainGame.innerHTML = '';
+
     levelDisplay.innerText = level;
 
     r.style.setProperty('--bolaSize', bolaSizePadrao);
 
-    vitoriaObj.style.display = 'none';
-    corSegurar = 999;
+    vitoria(false);
+    gameState.corSegurar = 999;
+
     renderizarPreview();
     toggleAcabou(false);
+    levelGlobal = level;
 
     localStorage.setItem('salvarNivel', levelGlobal);
+    resetState();
     
     switch (level) {
         case 1:
             nomeNivel('Joguinho TDAH pra LaRa :D');
-            obj = new Tubo(3);
+            obj = new Tubo(3, 0);
             obj.gerarBolas([2, 3]);
             
             obj = new Tubo(3);
@@ -28,19 +32,19 @@ function changeLevels(level) {
         case 2:
             nomeNivel('Mais parecido com aqueles anuncios');
             r.style.setProperty('--bolaSize', `min(${window.innerWidth/8}px, ${bolaSizePadrao})`);
-            obj = new Tubo(maxBolas=4, cor=0, min=0);
+            obj = new Tubo(maxBolas=4, cor=999, min=0);
             obj.gerarBolas([2,3,4,2]);
             
-            obj = new Tubo(maxBolas=4, cor=0, min=0);
+            obj = new Tubo(maxBolas=4, cor=999, min=0);
             obj.gerarBolas([3,3,4,2]);
 
-            obj = new Tubo(maxBolas=4, cor=0, min=0);
+            obj = new Tubo(maxBolas=4, cor=0, min=3);
             obj.gerarBolas([4,2,3,4]);
 
-            obj = new Tubo(maxBolas=4, cor=0, min=0);
+            obj = new Tubo(maxBolas=4, cor=0, min=3);
             obj.gerarBolas();
 
-            obj = new Tubo(maxBolas=4, cor=0, min=0);
+            obj = new Tubo(maxBolas=4, cor=0, min=3);
             obj.gerarBolas();
             break;
         case 3:
@@ -50,13 +54,13 @@ function changeLevels(level) {
             obj = new Tubo(6, 999);
             obj.gerarBolas([6, 7, 8, 8, 7, 6]);
 
-            obj = new Tubo(5, 1, 4);
+            obj = new Tubo(5, 0, 4);
             obj.gerarBolas();
 
-            obj = new Tubo(5, 1, 4);
+            obj = new Tubo(5, 0, 4);
             obj.gerarBolas();
 
-            obj = new Tubo(5, 1, 4);
+            obj = new Tubo(5, 0, 4);
             obj.gerarBolas();
 
             obj = new Tubo(6, 999);
@@ -167,14 +171,13 @@ function changeLevels(level) {
             obj = new Tubo(maxBolas=4, cor=0);
             obj.gerarBolas([4,4,3]);
             
-            obj = new Tubo(4, 3, 2);
+            obj = new Tubo(2, 3, 2);
             obj.gerarBolas();
             
             obj = new Tubo(4, 2, 1);
             obj.gerarBolas();
             
-            
-            obj = new Tubo(4, 1);
+            obj = new Tubo(4, 0, 0);
             obj.gerarBolas([3, 4, 2]);
             break;
         case 10:
@@ -265,7 +268,7 @@ function changeLevels(level) {
 
         break;
         case 14:
-            nomeNivel('Ai ta doendo, ta prensado');
+            nomeNivel('Ai ta doendo, ta prensado <br><br> clique duas vezes na tela para reverter');
             obj = new Tubo(maxBolas=1, cor=0, min=0);
             obj.gerarBolas([1,  2]);
             obj = new Tubo(maxBolas=1, cor=0, min=0);
@@ -278,16 +281,16 @@ function changeLevels(level) {
             obj.gerarBolas([]);
             break;
         case 15:
-            nomeNivel('cuidado com o espaço...');
-            obj = new Tubo(maxBolas=3, cor=0, min=1);
-            obj.gerarBolas([1,  2, 1, 1]);
-            obj = new Tubo(maxBolas=1, cor=0, min=1);
-            obj.gerarBolas([1,  2, ]);
-            
+            nomeNivel('Ordem! <i>paranormal<i>');
             obj = new Tubo(maxBolas=1, cor=0, min=1);
             obj.gerarBolas([]);
+            obj = new Tubo(maxBolas=1, cor=7, min=1);
+            obj.gerarBolas([8, 7]);
+            
+            obj = new Tubo(maxBolas=1, cor=7, min=1);
+            obj.gerarBolas([7, 8]);
 
-            obj = new Tubo(maxBolas=2, cor=2, min=2);
+            obj = new Tubo(maxBolas=1, cor=0, min=2);
             obj.gerarBolas([]);
 
             break;
@@ -331,8 +334,8 @@ function changeLevels(level) {
         break;
     }
 
-
-    geralEvento()
+    saveState();
+    geralEvento();
 }
 
 // aaa

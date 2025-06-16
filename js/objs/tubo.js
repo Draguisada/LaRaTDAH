@@ -1,7 +1,7 @@
 
 
 class Tubo {
-    constructor(maxBolas, cor = 1, min = 0) {
+    constructor(maxBolas, cor = 0, min = 0, maiorQue = 0) {
         this.obj = document.createElement('div');
         
         this.obj.maxBolas = maxBolas;
@@ -10,6 +10,10 @@ class Tubo {
         this.obj.min = Math.min(min, maxBolas);
 
         this.obj.corRequerida = cor;
+        // minimo e maior que
+        // minimo é o minimo precisa pra dar certo, retornando false se não condiz
+        // maior que é o quanto precisa pra dar true, mas nunca retornará false
+        this.obj.maiorQue = maiorQue;
 
         this.obj.style.borderColor = cores[cor];
         this.obj.style.backgroundColor = cores[cor] + '30';
@@ -17,6 +21,14 @@ class Tubo {
         this.obj.style.height = `calc(${maxBolas} * var(--bolaSize))`;
 
         mainGame.appendChild(this.obj);
+
+        this.obj.setar = (listaDeCores=[]) => {
+        this.obj.innerHTML = '';
+        listaDeCores.forEach(element => {
+            let bola = new Bola(element);
+            this.obj.appendChild(bola);
+        });
+    }
     }
 
     // recebe uma lista de numeros
@@ -25,8 +37,9 @@ class Tubo {
             let bola = new Bola(element);
             this.obj.appendChild(bola);
         });
-        
     }
+
+    
 }
 
 
