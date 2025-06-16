@@ -30,7 +30,7 @@ function changeLevels(level) {
             
             break;
         case 2:
-            nomeNivel('Mais parecido com aqueles anuncios');
+            nomeNivel('Mais parecido com aqueles anúncios');
             r.style.setProperty('--bolaSize', `min(${window.innerWidth/8}px, ${bolaSizePadrao})`);
             obj = new Tubo(maxBolas=4, cor=999, min=0);
             obj.gerarBolas([2,3,4,2]);
@@ -68,7 +68,7 @@ function changeLevels(level) {
 
             break;
         case 4:
-            nomeNivel('Começa a doer');
+            nomeNivel('Começa a doer <br><br> Clica no título (aqui) pra mostrar as cores!');
             r.style.setProperty('--bolaSize', `min(${window.innerWidth/10}px, ${bolaSizePadrao})`);
 
             obj = new Tubo(maxBolas=6, cor=0);

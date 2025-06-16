@@ -59,7 +59,8 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 
 document.body.addEventListener('click', (event) => {
-    if (event.detail === 2 && event.target == mainGame) {
+    // console.log(event)
+    if (event.detail === 2 && event.target == document.body) {
         // detectando a porra de um triple click
         loadState();
     }
