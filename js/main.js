@@ -2,12 +2,24 @@ const mainGame = document.getElementById('jogo');
 let corSegurar = 999;
 const segurandoObj = document.getElementById('segurando');
 const levelDisplay = document.getElementById('levelDisplay');
+<<<<<<< Updated upstream
 
 const vitoriaObj = document.getElementById('vitoria');
 
 const tituloSite = document.querySelector('title');
 
 const divSegurarBola = document.querySelector('#segurando > .bola');
+=======
+const vitoriaObj = document.getElementById('vitoria');
+const tituloSite = document.querySelector('title');
+const divSegurarBola = document.querySelector('#segurando > .bola');
+const tituloNivel = document.getElementById('joguinhoTDAH');
+const proximoNivelBotao = document.getElementById('proximoNivelBotao');
+
+
+let gameState = {pos: [], corSegurar: 999, assist: 0};
+let vitoriaBool = false;
+>>>>>>> Stashed changes
 
 cores = {
     999: '#00000000',
@@ -32,6 +44,7 @@ cores = {
     14: '#d42c00' // Laranja lésbico1 
 }
 
+<<<<<<< Updated upstream
 function handleClick(event) {
 
     let tubo = event.target;
@@ -206,6 +219,9 @@ document.addEventListener('keypress', (e) => {
     }
     tituloSite.innerText = digitos;
 })
+=======
+
+>>>>>>> Stashed changes
 
 
 
@@ -219,4 +235,63 @@ document.addEventListener('DOMContentLoaded', function() {
         changeLevels(levelGlobal);
     }
     
+<<<<<<< Updated upstream
+=======
+})
+
+document.body.addEventListener('click', (event) => {
+    // console.log(event)
+    if (event.detail === 2 && event.target == document.body) {
+        // detectando a porra de um triple click
+        loadState();
+    }
+})
+
+
+
+
+let digitos = '0';
+let debugMode = false;
+document.addEventListener('keypress', (e) => {
+
+    
+    let key = e.key
+
+    if (key == 'd') changeLevels(++levelGlobal);
+    if (key == 'a') changeLevels(--levelGlobal);
+
+    if (key == '*') { debugMode = !(debugMode); console.log('debug: ' + debugMode)}
+    if (debugMode) { // modo debug
+        console.log(key)
+        
+        if (key == 'Enter') {
+            changeLevels(parseInt(digitos));
+            levelGlobal = parseInt(digitos);
+            digitos = '0';
+            return;
+        }
+        if (isNumeric(key)) {
+            digitos = digitos + key
+        }
+        tituloSite.innerText = digitos;
+    }
+    else // modo jogo
+    {
+        if (!(isNumeric(key))) {
+            if (key == 'Enter') {
+                loadState();
+            }
+            if (vitoriaBool) {
+                proximoNivelBotao.click();
+            }
+        }
+        else
+        {
+        let num = parseInt(key);
+        tubosGameplay[num-1].click();
+    }
+    }
+    
+
+>>>>>>> Stashed changes
 })

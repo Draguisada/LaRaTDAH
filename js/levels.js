@@ -1,6 +1,7 @@
 let levelGlobal = 1;
 const r = document.querySelector(':root');
 const bolaSizePadrao = '55px';
+let tubosGameplay;
 
 function changeLevels(level) {
     mainGame.innerHTML = '';
@@ -249,9 +250,72 @@ function changeLevels(level) {
 
         break;
         case 14:
+<<<<<<< Updated upstream
             r.style.setProperty('--bolaSize', `min(${window.innerWidth/10}px, ${bolaSizePadrao})`);
 
             obj = new Tubo(maxBolas=5, cor=5, min=0);
+=======
+            nomeNivel('Ai ta doendo, ta prensado <br><br> clique duas vezes no vazio para reverter');
+            obj = new Tubo(maxBolas=1, cor=0, min=0);
+            obj.gerarBolas([1,  2]);
+            obj = new Tubo(maxBolas=1, cor=0, min=0);
+            obj.gerarBolas([1,  2]);
+            
+            obj = new Tubo(maxBolas=1, cor=0, min=0);
+            obj.gerarBolas([]);
+
+            obj = new Tubo(maxBolas=2, cor=2, min=2);
+            obj.gerarBolas([]);
+            break;
+        case 15:
+            nomeNivel('Ordem! <i>paranormal<i>');
+            obj = new Tubo(maxBolas=1, cor=0, min=1);
+            obj.gerarBolas([]);
+            obj = new Tubo(maxBolas=1, cor=7, min=1);
+            obj.gerarBolas([8, 7]);
+            
+            obj = new Tubo(maxBolas=1, cor=7, min=1);
+            obj.gerarBolas([7, 8]);
+
+            obj = new Tubo(maxBolas=1, cor=0, min=2);
+            obj.gerarBolas([]);
+
+            break;
+        case 16:
+            nomeNivel('Boa sorte');
+            r.style.setProperty('--bolaSize', `min(${window.innerWidth/13}px, ${bolaSizePadrao})`);
+
+            obj = new Tubo(maxBolas=8, cor=0, min=0);
+            obj.gerarBolas([1, 2, 3, 4, 1, 2, 5, 3]);
+
+            obj = new Tubo(maxBolas=8, cor=6, min=0);
+            obj.gerarBolas([4, 4, 6, 2, 3, 5, 6, 1 ]);
+
+            obj = new Tubo(maxBolas=7, cor=2, min=0);
+            obj.gerarBolas([4, 2, 1, 5, 6, 3, 4, 4]);
+
+            obj = new Tubo(maxBolas=7, cor=0, min=0);
+            obj.gerarBolas([3, 1, 2, 6, 4, 6, 5, 3]);
+
+            obj = new Tubo(maxBolas=7, cor=0, min=0);
+            obj.gerarBolas([5, 4, 6, 2, 5, 6, 1, 3]);
+
+            obj = new Tubo(maxBolas=8, cor=5, min=0);
+            obj.gerarBolas([2, 5, 5, 2, 3, 1, 1, 6]);
+
+            obj = new Tubo(maxBolas=8, cor=4, min=0);
+            obj.gerarBolas([]);
+
+            obj = new Tubo(maxBolas=7, cor=0, min=0);
+            obj.gerarBolas([]);
+
+            break;
+        case 17:
+            nomeNivel('Como é possível isso');
+            r.style.setProperty('--bolaSize', `min(${window.innerWidth/10}px, ${bolaSizePadrao})`);
+
+            obj = new Tubo(maxBolas=4, cor=5, min=4);
+>>>>>>> Stashed changes
             obj.gerarBolas([1, 2, 3, 2]);
             
             obj = new Tubo(maxBolas=4, cor=1, min=0);
@@ -276,14 +340,50 @@ function changeLevels(level) {
             obj.gerarBolas([3, 2, 2]);
             break;
 
+<<<<<<< Updated upstream
         case 15:
             toggleAcabou(true);
+=======
+        case 18:
+            nomeNivel('Como é possível isso');
+            r.style.setProperty('--bolaSize', `min(${window.innerWidth/10}px, ${bolaSizePadrao})`);
+>>>>>>> Stashed changes
 
-        break;
+            obj = new Tubo(maxBolas=6, cor=0, min=0);
+            obj.gerarBolas([1, 2,  1, 2, 3, 1, 3]);
+
+            obj = new Tubo(maxBolas=6, cor=0, min=0);
+            obj.gerarBolas([3,3, 1, 4, 1, 4, 2]);
+
+            obj = new Tubo(maxBolas=8, cor=0, min=0);
+            obj.gerarBolas([4, 5, 3, 1, 3, 2]);
+
+            obj = new Tubo(maxBolas=2, cor=0, min=0);
+            obj.gerarBolas([ 4, 5, 2]);
+
+            obj = new Tubo(maxBolas=6, cor=0, min=0);
+            obj.gerarBolas([4, 4, 3, 1]);
+
+            obj = new Tubo(maxBolas=5, cor=2, min=0);
+            obj.gerarBolas([5, 5, 5, 5]);
+
+            obj = new Tubo(maxBolas=3, cor=0, min=0);
+            obj.gerarBolas([]);
+
+
+            break;
+        default:
+            toggleAcabou(true);
     }
 
+<<<<<<< Updated upstream
 
     geralEvento()
+=======
+    saveState();
+    geralEvento();
+    tubosGameplay = document.getElementsByClassName('tubo');
+>>>>>>> Stashed changes
 }
 
 // aaa

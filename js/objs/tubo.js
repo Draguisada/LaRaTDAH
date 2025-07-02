@@ -1,7 +1,12 @@
 
 
 class Tubo {
+<<<<<<< Updated upstream
     constructor(maxBolas, cor = 1, min = 0, maiorQue = 0) {
+=======
+    constructor(maxBolas, cor = 0, min = 0, maiorQue = 0) {
+        
+>>>>>>> Stashed changes
         this.obj = document.createElement('div');
         
         this.obj.maxBolas = maxBolas;
@@ -18,7 +23,27 @@ class Tubo {
         this.obj.style.height = `calc(${maxBolas} * var(--bolaSize))`;
 
         mainGame.appendChild(this.obj);
+<<<<<<< Updated upstream
+=======
+
+        this.obj.setar = (listaDeCores=[]) => {
+            this.obj.innerHTML = '';
+            listaDeCores.forEach(element => {
+                let bola = new Bola(element);
+                this.obj.appendChild(bola);
+            })};
+
+        this.obj.statusAtualizar = () => {
+            console.log()
+            if (this.obj.childElementCount > this.obj.maxBolas) {
+                this.obj.style.borderStyle = 'dotted';
+            } else {
+                this.obj.style.borderStyle = 'solid';
+            }
+        }
+>>>>>>> Stashed changes
     }
+    
 
     // recebe uma lista de numeros
     gerarBolas(listaDeCores=[]) {
@@ -26,8 +51,12 @@ class Tubo {
             let bola = new Bola(element);
             this.obj.appendChild(bola);
         });
+<<<<<<< Updated upstream
         
     }
+=======
+    }   
+>>>>>>> Stashed changes
 }
 
 
