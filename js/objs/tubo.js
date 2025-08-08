@@ -1,12 +1,9 @@
 
 
 class Tubo {
-<<<<<<< Updated upstream
+
     constructor(maxBolas, cor = 1, min = 0, maiorQue = 0) {
-=======
-    constructor(maxBolas, cor = 0, min = 0, maiorQue = 0) {
-        
->>>>>>> Stashed changes
+
         this.obj = document.createElement('div');
         
         this.obj.maxBolas = maxBolas;
@@ -15,6 +12,9 @@ class Tubo {
         this.obj.min = Math.min(min, maxBolas);
 
         this.obj.corRequerida = cor;
+        // minimo e maior que
+        // minimo é o minimo precisa pra dar certo, retornando false se não condiz
+        // maior que é o quanto precisa pra dar true, mas nunca retornará false
         this.obj.maiorQue = maiorQue;
 
         this.obj.style.borderColor = cores[cor];
@@ -23,8 +23,6 @@ class Tubo {
         this.obj.style.height = `calc(${maxBolas} * var(--bolaSize))`;
 
         mainGame.appendChild(this.obj);
-<<<<<<< Updated upstream
-=======
 
         this.obj.setar = (listaDeCores=[]) => {
             this.obj.innerHTML = '';
@@ -41,7 +39,6 @@ class Tubo {
                 this.obj.style.borderStyle = 'solid';
             }
         }
->>>>>>> Stashed changes
     }
     
 
@@ -51,12 +48,11 @@ class Tubo {
             let bola = new Bola(element);
             this.obj.appendChild(bola);
         });
-<<<<<<< Updated upstream
-        
+
     }
-=======
-    }   
->>>>>>> Stashed changes
+
+    
+
 }
 
 

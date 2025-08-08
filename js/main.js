@@ -1,15 +1,8 @@
 const mainGame = document.getElementById('jogo');
-let corSegurar = 999;
 const segurandoObj = document.getElementById('segurando');
 const levelDisplay = document.getElementById('levelDisplay');
-<<<<<<< Updated upstream
 
-const vitoriaObj = document.getElementById('vitoria');
 
-const tituloSite = document.querySelector('title');
-
-const divSegurarBola = document.querySelector('#segurando > .bola');
-=======
 const vitoriaObj = document.getElementById('vitoria');
 const tituloSite = document.querySelector('title');
 const divSegurarBola = document.querySelector('#segurando > .bola');
@@ -19,11 +12,16 @@ const proximoNivelBotao = document.getElementById('proximoNivelBotao');
 
 let gameState = {pos: [], corSegurar: 999, assist: 0};
 let vitoriaBool = false;
->>>>>>> Stashed changes
+
+=======
+const tituloNivel = document.getElementById('joguinhoTDAH');
+
+let gameState = {pos: [], corSegurar: 999, assist: 0};
+  
 
 cores = {
     999: '#00000000',
-    0: '#000', // preto
+    0: '#fff', // preto
     1: '#fff', // branco
     2: '#f24123', // Vermelho
     3: '#20c833', // Verde
@@ -44,7 +42,7 @@ cores = {
     14: '#d42c00' // Laranja lésbico1 
 }
 
-<<<<<<< Updated upstream
+
 function handleClick(event) {
 
     let tubo = event.target;
@@ -201,10 +199,6 @@ function toggleAcabou(especifico) {
 }
 
 
-
-
-
-
 let digitos = '';
 document.addEventListener('keypress', (e) => {
     let key = e.key
@@ -213,21 +207,16 @@ document.addEventListener('keypress', (e) => {
         changeLevels(parseInt(digitos));
         levelGlobal = parseInt(digitos);
         digitos = '';
+        return;
     }
     if (isNumeric(key)) {
         digitos = digitos + key
     }
     tituloSite.innerText = digitos;
 })
-=======
-
->>>>>>> Stashed changes
-
-
-
 
 document.addEventListener('DOMContentLoaded', function() {
-    if (localStorage.getItem("salvarNivel") == null) {
+    if (localStorage.getItem("salvarNivel") == null || localStorage.getItem("salvarNivel") == "NaN") {
         localStorage.setItem("salvarNivel", '1');
         changeLevels(1);
     } else {
@@ -235,8 +224,7 @@ document.addEventListener('DOMContentLoaded', function() {
         changeLevels(levelGlobal);
     }
     
-<<<<<<< Updated upstream
-=======
+
 })
 
 document.body.addEventListener('click', (event) => {
@@ -245,9 +233,8 @@ document.body.addEventListener('click', (event) => {
         // detectando a porra de um triple click
         loadState();
     }
+
 })
-
-
 
 
 let digitos = '0';
@@ -292,6 +279,4 @@ document.addEventListener('keypress', (e) => {
     }
     }
     
-
->>>>>>> Stashed changes
 })

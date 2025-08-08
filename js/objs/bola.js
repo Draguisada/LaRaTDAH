@@ -5,6 +5,7 @@ class Bola {
         this.obj = document.createElement('div');
         
         this.obj.cor = cor;
+        
         this.obj.classList.add('bola');
         this.obj.style.backgroundColor = `${cores[cor]}`;
         this.obj.innerHTML = `${cor}`;
