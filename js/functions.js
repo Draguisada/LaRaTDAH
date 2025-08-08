@@ -36,11 +36,26 @@ function handleClick(event) {
     // segurandoObj.style.top = tubo.offsetTop + 'px';
     
     tubo.removeChild(select);
+
+    atualizarTubos();
+
     renderizarPreview();
 }
 
 function renderizarPreview() {
+
+    divSegurarBola.style.backgroundColor = cores[gameState.corSegurar];
+
+}
+
+function atualizarTubos() {
+    let tubos = document.getElementsByClassName('tubo');
+    for (let i = 0; i < tubos.length; i++) {
+        tubos[i].statusAtualizar();
+    }
+
     divSegurarBola.style.backgroundColor = cores[gameState.corSegurar]
+
 }
 
 function geralEvento() {
@@ -48,6 +63,9 @@ function geralEvento() {
 
     for (let i = 0; i < tubos.length; i++) {
         tubos[i].addEventListener('click', handleClick)
+
+        tubos[i].statusAtualizar();
+
     }
 }
 
@@ -63,6 +81,7 @@ function checkWin() {
     let tubos = document.getElementsByClassName('tubo');
     for (let i = 0; i < tubos.length; i++) {
         let tuboAtual = tubos[i];
+
         let corPrincipal = tuboAtual.corRequerida;
         let bolas = tuboAtual.childNodes;
         if (debugRegras) console.log('==========')
@@ -125,8 +144,15 @@ function isNumeric(str) {
 function vitoria(bool) {
     if (bool) {
         vitoriaObj.style.display = 'flex';
+
+        vitoriaBool = true;
     } else {
         vitoriaObj.style.display = 'none';
+        vitoriaBool = false;
+
+    } else {
+        vitoriaObj.style.display = 'none';
+
     }
 }
 
@@ -174,7 +200,8 @@ function saveState() {
     let listaMovs = gameState.pos;
     
 
-    if (listaMovs.length <= 3) {
+
+    if (listaMovs.length <= 10) {
         listaMovs.push(gameAtual);
     } else {
         listaMovs.shift();
@@ -193,6 +220,9 @@ function loadState() {
     }
     
     gameState.pos.pop();
+
+    atualizarTubos();
+
     geralEvento();
     renderizarPreview();
 }

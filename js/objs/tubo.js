@@ -1,7 +1,9 @@
 
 
 class Tubo {
-    constructor(maxBolas, cor = 0, min = 0, maiorQue = 0) {
+
+    constructor(maxBolas, cor = 1, min = 0, maiorQue = 0) {
+
         this.obj = document.createElement('div');
         
         this.obj.maxBolas = maxBolas;
@@ -23,13 +25,22 @@ class Tubo {
         mainGame.appendChild(this.obj);
 
         this.obj.setar = (listaDeCores=[]) => {
-        this.obj.innerHTML = '';
-        listaDeCores.forEach(element => {
-            let bola = new Bola(element);
-            this.obj.appendChild(bola);
-        });
+            this.obj.innerHTML = '';
+            listaDeCores.forEach(element => {
+                let bola = new Bola(element);
+                this.obj.appendChild(bola);
+            })};
+
+        this.obj.statusAtualizar = () => {
+            console.log()
+            if (this.obj.childElementCount > this.obj.maxBolas) {
+                this.obj.style.borderStyle = 'dotted';
+            } else {
+                this.obj.style.borderStyle = 'solid';
+            }
+        }
     }
-    }
+    
 
     // recebe uma lista de numeros
     gerarBolas(listaDeCores=[]) {
@@ -37,9 +48,11 @@ class Tubo {
             let bola = new Bola(element);
             this.obj.appendChild(bola);
         });
+
     }
 
     
+
 }
 
 
