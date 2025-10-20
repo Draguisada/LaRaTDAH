@@ -67,7 +67,7 @@ function nomeNivel(nome) {
 
 function checkWin() {
 
-    debugRegras = 0;
+    debugRegras = localStorage.getItem('debug');
 
     let tubos = document.getElementsByClassName('tubo');
     for (let i = 0; i < tubos.length; i++) {
@@ -115,6 +115,7 @@ function checkWin() {
         for (let i = 0; i < bolas.length; i++) {
         
             if (bolas[i].cor != corPrincipal) {
+                console.log(bolas[i] + ' é diferente de ' + corPrincipal)
                 return false;
             }
         }

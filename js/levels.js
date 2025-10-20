@@ -2,6 +2,46 @@ let levelGlobal;
 const r = document.querySelector(':root');
 const bolaSizePadrao = '55px';
 
+// Configuração para usar níveis procedural
+const USE_PROCEDURAL_LEVELS = true;
+const PROCEDURAL_START_LEVEL = 19; // A partir de qual nível usar geração procedural
+
+// ========================================
+// PERSONALIZAÇÃO DOS NOMES DOS NÍVEIS
+// ========================================
+// Edite aqui para personalizar os nomes dos níveis procedurais
+
+const NOMES_NIVEIS = [
+    "Desafio das Cores", "Labirinto Colorido", "Quebra-Cabeça Mágico", "Puzzle das Bolas",
+    "Desafio do Arco-íris", "Mistério das Cores", "Enigma Colorido", "Desafio Impossível",
+    "Torre de Cores", "Dança das Bolas", "Sinfonia Colorida", "Balé das Cores",
+    "Desafio Lunar", "Quebra-Cabeça Solar", "Enigma Estelar", "Desafio Galáctico",
+    "Mistério das Estrelas", "Puzzle Cósmico", "Desafio do Universo", "Enigma Espacial",
+    "Desafio do Oceano", "Mistério das Profundezas", "Quebra-Cabeça Submarino", "Enigma Aquático",
+    "Desafio da Floresta", "Mistério da Natureza", "Puzzle Verde", "Enigma Natural",
+    "Desafio do Fogo", "Mistério das Chamas", "Quebra-Cabeça Ardente", "Enigma Ígneo",
+    "Desafio do Gelo", "Mistério Congelado", "Puzzle Gelado", "Enigma Glacial",
+    "Desafio do Vento", "Mistério Aéreo", "Quebra-Cabeça Voador", "Enigma Celestial"
+];
+
+const NOMES_ESPECIAIS = {
+    20: "🎯 Primeiro Procedural",
+    30: "🌟 Estrela Dourada", 
+    40: "💎 Diamante Precioso",
+    50: "👑 Coroa Real",
+    60: "🏆 Troféu de Ouro",
+    70: "💫 Estrela Cadente",
+    80: "🌙 Lua Cheia",
+    90: "☀️ Sol Brilhante",
+    100: "🎊 Centésimo Nível!"
+};
+
+const EMOJIS_COMPLEXIDADE = {
+    INICIANTE: "🌱",    // Níveis 20-30
+    INTERMEDIARIO: "🌿", // Níveis 31-60  
+    AVANCADO: "🌳"      // Níveis 61+
+};
+
 function changeLevels(level) {
     mainGame.innerHTML = '';
 
@@ -373,9 +413,16 @@ function changeLevels(level) {
             obj = new Tubo(maxBolas=3, cor=0, min=0);
             obj.gerarBolas([]);
             break;
-
-        case 19:
-            toggleAcabou(true);
+        
+        default:
+            // Níveis procedural a partir do nível 20
+            if (USE_PROCEDURAL_LEVELS && level >= PROCEDURAL_START_LEVEL) {
+                generateProceduralLevelContent(level);
+            } else {
+                // Nível não encontrado
+                nomeNivel('Nível não encontrado');
+                toggleAcabou(true);
+            }
         break;
     }
 
@@ -383,6 +430,143 @@ function changeLevels(level) {
     saveState();
     geralEvento();
     tubosGameplay = document.getElementsByClassName('tubo');
+}
+
+/**
+ * Gera nome criativo para o nível procedural
+ * @param {number} level - Número do nível
+ * @param {number} numTubos - Número de tubos
+ * @param {number} numCores - Número de cores
+ * @returns {string} Nome do nível
+ */
+function gerarNomeNivel(level, numTubos, numCores) {
+    // Usar nome especial se for múltiplo de 10
+    let nomeNivel = 'O tal do infinito';
+    // Adicionar emoji baseado na complexidade
+    let emoji;
+    if (level <= 30) {
+        emoji = EMOJIS_COMPLEXIDADE.INICIANTE;
+    } else if (level <= 60) {
+        emoji = EMOJIS_COMPLEXIDADE.INTERMEDIARIO;
+    } else {
+        emoji = EMOJIS_COMPLEXIDADE.AVANCADO;
+    }
+    
+    if (level == 100) {
+        nomeNivel = 'meu deus amor';
+    } else if (level == 200) {
+        nomeNivel = 'Meu. deus.'
+    } else if (level == 300) {
+        nomeNivel = 'Me contate amor meu deus pare é o nível 300 já'
+    }
+
+    
+    return `${emoji} ${nomeNivel}`;
+}
+
+/**
+ * Gera conteúdo para um nível procedural
+ * @param {number} level - Número do nível
+ */
+function generateProceduralLevelContent(level) {
+    try {
+        // Gerar configuração do nível
+        const levelConfig = generateProceduralLevel(level);
+        
+        // Definir nome do nível baseado no número e configuração
+        const numTubos = levelConfig.config.length;
+        const numCores = levelConfig.metadata.coresUsadas.length;
+        
+        // Gerar nome criativo baseado no nível
+        const levelName = gerarNomeNivel(level, numTubos, numCores);
+        nomeNivel(levelName);
+        
+        // Ajustar tamanho das bolas baseado na quantidade de tubos
+        if (numTubos > 6) {
+            r.style.setProperty('--bolaSize', `min(${window.innerWidth/12}px, ${bolaSizePadrao})`);
+        } else if (numTubos > 4) {
+            r.style.setProperty('--bolaSize', `min(${window.innerWidth/10}px, ${bolaSizePadrao})`);
+        }
+        
+        // Criar tubos baseado na configuração
+        levelConfig.config.forEach((tuboConfig, index) => {
+            const obj = new Tubo(
+                tuboConfig.maxBolas,
+                tuboConfig.cor,
+                tuboConfig.min
+            );
+            
+            // Adicionar bolas se houver (em ordem reversa para empilhar corretamente)
+            if (tuboConfig.bolas && tuboConfig.bolas.length > 0) {
+                obj.gerarBolas([...tuboConfig.bolas].reverse());
+            }
+        });
+        
+        // Log para debug (pode ser removido em produção)
+        console.log(`Nível ${level} gerado procedural:`, levelConfig);
+        
+    } catch (error) {
+        console.error('Erro ao gerar nível procedural:', error);
+        nomeNivel('Erro na geração do nível');
+        
+        // Fallback: criar um nível simples
+        const obj = new Tubo(4, 0);
+        obj.gerarBolas([2, 3]);
+        
+        const obj2 = new Tubo(4, 0);
+        obj2.gerarBolas([3, 2]);
+    }
+}
+
+/**
+ * Gera um nível temático procedural
+ * @param {string} theme - Tema do nível
+ * @param {number} level - Número do nível
+ */
+function generateThemedLevelContent(theme, level) {
+    try {
+        const levelConfig = generateThemedLevel(theme, level);
+        
+        const themeNames = {
+            'rainbow': 'Arco-íris',
+            'monochrome': 'Monocromático',
+            'warm': 'Cores Quentes',
+            'cool': 'Cores Frias',
+            'sunset': 'Pôr do Sol',
+            'ocean': 'Oceano',
+            'forest': 'Floresta',
+            'fire': 'Fogo',
+            'ice': 'Gelo',
+            'autumn': 'Outono',
+            'spring': 'Primavera',
+            'neon': 'Neon',
+            'pastel': 'Pastéis',
+            'vintage': 'Vintage',
+            'galaxy': 'Galáxia'
+        };
+        
+        const levelName = `${themeNames[theme]} - Nível ${level}`;
+        nomeNivel(levelName);
+        
+        // Criar tubos baseado na configuração
+        levelConfig.config.forEach((tuboConfig, index) => {
+            const obj = new Tubo(
+                tuboConfig.maxBolas,
+                tuboConfig.cor,
+                tuboConfig.min
+            );
+            
+            if (tuboConfig.bolas && tuboConfig.bolas.length > 0) {
+                obj.gerarBolas([...tuboConfig.bolas].reverse());
+            }
+        });
+        
+        console.log(`Nível temático ${theme} gerado:`, levelConfig);
+        
+    } catch (error) {
+        console.error('Erro ao gerar nível temático:', error);
+        generateProceduralLevelContent(level); // Fallback
+    }
 }
 
 // aaa

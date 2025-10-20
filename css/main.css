@@ -110,11 +110,11 @@ button {
     width: 100vw;
 
     justify-content: space-around;
-    position: absolute;
+    /* position: absolute;
     top: 0;
     left: 50%;
 
-    transform: translate(-50%);
+    transform: translate(-50%); */
 }
 
 #hud > h1 {
@@ -156,4 +156,9 @@ button {
 #joguinhoTDAH {
     font-size: 24px;
     text-align: center;
+}
+
+
+@media (max-width: 750px) {
+
 }
