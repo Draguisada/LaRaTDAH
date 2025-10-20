@@ -37,13 +37,18 @@
         <button onclick="changeLevels(++levelGlobal)">Próximo</button>
     </div>
     <div id="acabou">
-        <h1>Um dia eu faço o infinito, mas por enquanto, aproveita <3 <br> O que mais eu tenho a dizer, não é mesmo?</h1>
+        <h1>Um dia eu faço o infinito, mas por enquanto, aproveita <3 <br></h1>
     </div>
 
     <main id="jogo">
 
     </main>
-    <button onclick="changeLevels(levelGlobal)" id="reiniciar">Reiniciar nível</button>
+    <div>
+        <button onclick="loadState()">Reverter ação</button>
+        <button onclick="toggleAssist()">Modo daltônico</button>
+        <p></p>
+    </div>
+    <button onclick="reiniciarNivel()" id="reiniciar">Reiniciar nível</button>
 </body>
 </html>
 

@@ -110,11 +110,11 @@ button {
     width: 100vw;
 
     justify-content: space-around;
-    /* position: absolute;
+    position: absolute;
     top: 0;
     left: 50%;
 
-    transform: translate(-50%); */
+    transform: translate(-50%);
 }
 
 #hud > h1 {
@@ -152,13 +152,22 @@ button {
 
     border-radius: 10px;
 }
-/*asdasd*/
+
 #joguinhoTDAH {
     font-size: 24px;
     text-align: center;
+    margin-top: 70px;
+    width: 100vw;
 }
 
+@media (min-width: 1200px) {
+    #hud {
+        width: 30vw;
+    }
+}
 
-@media (max-width: 750px) {
-
+@media (max-width: 1110px) {
+    body {
+        flex-direction: row;
+    }
 }

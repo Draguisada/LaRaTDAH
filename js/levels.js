@@ -36,11 +36,11 @@ const NOMES_ESPECIAIS = {
     100: "🎊 Centésimo Nível!"
 };
 
-const EMOJIS_COMPLEXIDADE = {
-    INICIANTE: "🌱",    // Níveis 20-30
-    INTERMEDIARIO: "🌿", // Níveis 31-60  
-    AVANCADO: "🌳"      // Níveis 61+
-};
+const EMOJIS_COMPLEXIDADE = [
+    "🌱", "🎯", "🌟", "🌙", "💖",
+    "🌿", "💎", "👑", "☀️", "💝",
+    "🌳", "🏆", "💫", "🎊", "🐸"
+];
 
 function changeLevels(level) {
     mainGame.innerHTML = '';
@@ -443,14 +443,10 @@ function gerarNomeNivel(level, numTubos, numCores) {
     // Usar nome especial se for múltiplo de 10
     let nomeNivel = 'O tal do infinito';
     // Adicionar emoji baseado na complexidade
-    let emoji;
-    if (level <= 30) {
-        emoji = EMOJIS_COMPLEXIDADE.INICIANTE;
-    } else if (level <= 60) {
-        emoji = EMOJIS_COMPLEXIDADE.INTERMEDIARIO;
-    } else {
-        emoji = EMOJIS_COMPLEXIDADE.AVANCADO;
-    }
+    const random = Math.round(Math.random()*(EMOJIS_COMPLEXIDADE.length-1));
+    let emoji = EMOJIS_COMPLEXIDADE[random];
+    console.log(random)
+    
     
     if (level == 100) {
         nomeNivel = 'meu deus amor';

@@ -138,3 +138,11 @@ document.body.addEventListener('click', (event) => {
         loadState();
     }
 })
+
+
+
+function reiniciarNivel() {
+
+    if (!confirm("Desenha reiniciar o nível?")) return
+    changeLevels(levelGlobal)
+}

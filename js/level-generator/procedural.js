@@ -10,7 +10,7 @@ class ProceduralLevelGenerator {
             // Todas as cores disponíveis (54 cores no total)
             cores: [
                 // Cores básicas originais
-                0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
                 // Novas cores - vermelhos e rosas
                 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
                 // Novas cores - azuis e roxos
@@ -24,7 +24,7 @@ class ProceduralLevelGenerator {
             coresAvancadas: [5, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 26, 27, 28, 29, 30, 31, 32, 33, 34, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54], // Cores mais raras
             maxTubosPorNivel: 8,
             maxBolasPorTubo: 10,
-            minBolasPorTubo: 1
+            minBolasPorTubo: 0
         };
 
         // Tipos de tubos disponíveis
@@ -360,9 +360,9 @@ class ProceduralLevelGenerator {
      */
     getRandomTubeType(seed) {
         const tipos = [
-            { tipo: 'NORMAL', cor: 0 },
+            { tipo: 'NORMAL', cor: 1 },
             { tipo: 'COLORIDO', cor: null },
-            { tipo: 'RESTRITO', cor: 0 },
+            { tipo: 'RESTRITO', cor: 1 },
             { tipo: 'INVISIVEL', cor: 999 }
         ];
 
