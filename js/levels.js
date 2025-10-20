@@ -59,6 +59,14 @@ function changeLevels(level) {
 
     localStorage.setItem('salvarNivel', levelGlobal);
     resetState();
+
+    if (level % 5 != 3 && level % 5 != 4 && level >= 30) {
+        const random = Math.round(Math.random()*14+1);
+        console.log(random);
+        document.body.style.backgroundImage = `URL(src/imagens/${random}.jpeg)`;
+    } else {
+        document.body.style.backgroundImage = ``;
+    }
     
     switch (level) {
         case 1:
@@ -445,7 +453,7 @@ function gerarNomeNivel(level, numTubos, numCores) {
     // Adicionar emoji baseado na complexidade
     const random = Math.round(Math.random()*(EMOJIS_COMPLEXIDADE.length-1));
     let emoji = EMOJIS_COMPLEXIDADE[random];
-    console.log(random)
+    // console.log(random)
     
     
     if (level == 100) {
@@ -455,6 +463,8 @@ function gerarNomeNivel(level, numTubos, numCores) {
     } else if (level == 300) {
         nomeNivel = 'Me contate amor meu deus pare é o nível 300 já'
     }
+
+
 
     
     return `${emoji} ${nomeNivel}`;
@@ -499,10 +509,10 @@ function generateProceduralLevelContent(level) {
         });
         
         // Log para debug (pode ser removido em produção)
-        console.log(`Nível ${level} gerado procedural:`, levelConfig);
+        // console.log(`Nível ${level} gerado procedural:`, levelConfig);
         
     } catch (error) {
-        console.error('Erro ao gerar nível procedural:', error);
+        // console.error('Erro ao gerar nível procedural:', error);
         nomeNivel('Erro na geração do nível');
         
         // Fallback: criar um nível simples
